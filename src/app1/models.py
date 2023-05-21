@@ -4,7 +4,7 @@ from datetime import datetime
 
 # Create your models here.
 class Type_employee(models.Model):
-    name = models.CharField(max_length=150, verbose_name='nombre_tipo')
+    name = models.CharField(max_length=150, unique=True, verbose_name='nombre_tipo')
 
     def __str__(self):
         return self.name
