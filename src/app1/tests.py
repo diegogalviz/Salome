@@ -30,12 +30,12 @@ from app1.models import *
 # _______________________________________________________________
 
 # listar
-query = Type_employee.objects.all()
+query = Client.objects.all()
 print(query)
 # _______________________________________________________________
 
 # edicion
-# t = Type_employee.objects.get(id=1)
+# t = Client.objects.get(id=1)
 # t.name = 'presidente1'
 # t.save()
 # print(t)
@@ -43,7 +43,7 @@ print(query)
 
 # _______________________________________________________________
 # eliminacion
-# t= Type_employee.objects.get(id=1)
+# t= Client.objects.get(id=1)
 # t.delete()
 
 # _______________________________________________________________
@@ -51,7 +51,7 @@ print(query)
 # llamar a los que cumplan un filtro es como usar like en sql
 name__contains: tiene encuenta si son mayusculas o no
 '''
-query = Type_employee.objects.filter(name__contains='se')
+query = Client.objects.filter(name__contains='se')
 print(query)
 
 # _______________________________________________________________
@@ -60,7 +60,7 @@ print(query)
 # llamar a los que cumplan un filtro es como usar like en sql
 name__icontains: ignora si son mayusculas o no
 '''
-query = Type_employee.objects.filter(name__icontains='ME')
+query = Client.objects.filter(name__icontains='ME')
 print(query)
 
 # _______________________________________________________________
@@ -69,7 +69,7 @@ print(query)
 # llamar a los que cumplan un filtro es como usar like en sql
 name__startswith: buscar las que inicien por una letra
 '''
-query = Type_employee.objects.filter(name__startswith='p')
+query = Client.objects.filter(name__startswith='p')
 print(query)
 
 # _______________________________________________________________
@@ -78,7 +78,7 @@ print(query)
 # llamar a los que cumplan un filtro es como usar like en sql
 name__endswith: buscar las que terminen por una letra 
 '''
-query = Type_employee.objects.filter(name__endswith='o')
+query = Client.objects.filter(name__endswith='o')
 print(query)
 
 # _______________________________________________________________
@@ -87,7 +87,7 @@ print(query)
 # llamar a los que cumplan un filtro es como usar like en sql
 name__exact: buscar las coinsidencias que sean exactamente igual a
 '''
-query = Type_employee.objects.filter(name__exact='presidente')
+query = Client.objects.filter(name__exact='presidente')
 print(query)
 
 # _______________________________________________________________
@@ -97,7 +97,7 @@ print(query)
 name__in: buscar las coinsidencias que esten dentro de una lista que le pasemos...
 '''
 
-query = Type_employee.objects.filter(name__in=['presidente', 'mensajeria'])
+query = Client.objects.filter(name__in=['presidente', 'mensajeria'])
 print(query)
 
 # _______________________________________________________________
@@ -107,7 +107,7 @@ print(query)
 .count: si agregamos esta funcion al final de query, podemos saber cuantos registros hay en el query...
 '''
 
-query = Type_employee.objects.filter(name__in=['presidente', 'mensajeria']).count()
+query = Client.objects.filter(name__in=['presidente', 'mensajeria']).count()
 print(query)
 
 # _______________________________________________________________
@@ -117,7 +117,7 @@ print(query)
 .query: si agregamos esta funcion al final del query, podemos saber la sentencia sql que esta utilizando
 '''
 
-query = Type_employee.objects.filter(name__contains='pre').query
+query = Client.objects.filter(name__contains='pre').query
 print(query)
 
 # _______________________________________________________________
@@ -128,7 +128,7 @@ print(query)
 podemos coloacar elementos que no queramos tener en cuenta en el analisis del query
 '''
 
-query = Type_employee.objects.filter(name__endswith='o').exclude(id=6)
+query = Client.objects.filter(name__endswith='o').exclude(id=6)
 print(query)
 
 # _______________________________________________________________
@@ -138,6 +138,28 @@ print(query)
 podemos iterar mediante un for el query que hayamos escrito.
 '''
 
-query = Type_employee.objects.filter(name__endswith='o')
+query = Client.objects.filter(name__endswith='o')
 for i in query:
     print(i.name)
+
+# _______________________________________________________________
+
+'''
+# llamar a los que cumplan un filtro es como usar like en sql
+[:2]podemos limitar el numero de registros traidos con la sintasis de listas de python al final de la lista a iterar
+'''
+
+query = Client.objects.filter(name__endswith='o')
+for i in query[:2]:
+    print(i.name)
+
+    # _______________________________________________________________
+
+    '''
+    # llamar a los que cumplan un filtro es como usar like en sql
+    [:2]podemos limitar el numero de registros traidos con la sintasis de listas de python al final de la lista a iterar
+    '''
+
+    query = Client.objects.filter(name__endswith='o')
+    for i in query[:2]:
+        print(i.name)
